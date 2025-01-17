@@ -2,5 +2,5 @@
 if __name__ == "__main__":
     import sys
     args = sys.argv[1:]
-    total = sum([int(args) for args in args])
+    total = sum([int(arg) for arg in args])
     print(total)
