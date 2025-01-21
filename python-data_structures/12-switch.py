@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-def switch(my_list=[]):
-    if len(my_list) > 1:
-        my_list[0], my_list[1] = my_list[1], my_list[0]
-    return my_list
+a = 89
+b = 10
+a, b = b, a
+print("a={:d} - b={:d}".format(a, b))
