@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 def roman_to_int(roman_string):
-    d = {"X": 10, "I": 1, "V": 5, "L": 50, "C": 100}
+    d = {"X": 10, "I": 1, "V": 5, "L": 50, "C": 100, "D": 500, "M": 1000}
     c = roman_string
     sum = d[c[0]]
     for i in range(1, len(c)):
