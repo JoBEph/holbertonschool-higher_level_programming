@@ -2,11 +2,13 @@
 
 def roman_to_int(roman_string):
     d = {"X": 10, "I": 1, "V": 5, "L": 50, "C": 100, "D": 500, "M": 1000}
-    c = roman_string
-    sum = d[c[0]]
-    for i in range(1, len(c)):
-        if d[c[i]] <= d[c[i-1]]:
-            sum += d[c[i]]
+    prev_value = 0
+    sum = 0
+    for i in roman_string:
+        value = d[i]
+        if prev_value < value:
+            sum += value - 2 * prev_value
         else:
-            sum += d[c[i]] - 2 * d[c[i-1]]
-    return sum
+            sum += value
+        prev_value = value
+        return sum
