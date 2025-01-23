@@ -3,4 +3,4 @@
 def raise_exception():
     i = -1
     if i < 0:
-        raise NameError("C is fun")
+        raise NameError("Sorry, no numbers below zero")
