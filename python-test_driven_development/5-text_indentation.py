@@ -5,15 +5,13 @@ def text_indentation(text):
         raise TypeError("text must be a string")
     if not text:
         raise ValueError("text must not be empty")
-    special_chars = [".", ":", "?", "!"]
+    
+    special_chars = [".", ":", "?"]
     i = 0
     while i < len(text):
+        print(text[i], end="")
         if text[i] in special_chars:
-            print(text[i], end="")
-            print()
-            i += 1
-            while i < len(text) and text[i] == " ":
+            print("\n")
+            while i + 1 < len(text) and text[i + 1] == " ":
                 i += 1
-        else:
-            print(text[i], end="")
-            i += 1
+        i += 1
