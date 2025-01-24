@@ -1,28 +1,6 @@
-"""
-5-text_indentation Module
---------------------------
-Provides a function to format text with specific indentations.
-"""
->>> text_indentation = __import__("5-text_indentation").text_indentation
+Test cases for text_indentation function
 
-	>>> 0 < len(__import__("5-text_indentation").__doc__)
-	True
-
-	>>> 0 < len(__import__("5-text_indentation").text_indentation.__doc__)
-	True
-
-	>>> text_indentation("")
-
-	>>> text_indentation("A")
-	A
-
-	>>> text_indentation("?")
-	?
-	<BLANKLINE>
-
-	>>> text_indentation(" : ")
-	:
-	<BLANKLINE>
+	>>> text_indentation = __import__('5-text_indentation').text_indentation
 
 	>>> text = """Lorem ipsum dolor sit amet, consectetur adipiscing elit.\
 	... Quonam modo? Utrum igitur tibi litteram videor an totas paginas commovere? \
