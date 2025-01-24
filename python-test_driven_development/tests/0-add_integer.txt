@@ -1,31 +1,74 @@
 >>> add_integer = __import__('0-add_integer').add_integer
 
->>> add_integer(5, 15)
-20
+# Adding positive to positive
+>>> add_integer(5, 10)
+15
 
->>> add_integer(-5, 15)
-10
+# Adding positive to negative
+>>> add_integer(50, -15)
+35
 
-# The next line should raise a TypeError as True is not considered an integer:
->>> add_integer(True, 15) # doctest: +ELLIPSIS
+# Adding only one number
+>>> add_integer(25)
+123
+
+# Adding float to integer
+>>> add_integer(20.7, 8)
+28
+
+# Adding float to float
+>>> add_integer(4.4, 2.6)
+6
+
+# Adding number to string
+>>> add_integer(9, "Code")
+Traceback (most recent call last):
+    ...
+TypeError: b must be an integer
+
+# Adding None
+>>> add_integer(None)
 Traceback (most recent call last):
     ...
 TypeError: a must be an integer
 
-# The next line should raise a TypeError as "Hello" is a string, not an integer:
->>> add_integer("Hello", 15) # doctest: +ELLIPSIS
+# Adding two negative numbers
+>>> add_integer(-7, -12)
+-19
+
+# Adding zero to a number
+>>> add_integer(0, 7)
+7
+
+# Adding large integers
+>>> add_integer(987654321, 123456789)
+1111111110
+
+# Adding large floats
+>>> add_integer(2e10, 2e10)
+40000000000
+
+# Adding a list
+>>> add_integer([3, 4], 5)
 Traceback (most recent call last):
     ...
 TypeError: a must be an integer
 
-# The next line should raise a TypeError as True is not considered an integer:
->>> add_integer(5, True) # doctest: +ELLIPSIS
+# Adding a dictionary
+>>> add_integer(2, {"key": "value"})
 Traceback (most recent call last):
     ...
 TypeError: b must be an integer
 
-# The next line should raise a TypeError as "Hello" is a string, not an integer:
->>> add_integer(5, "Hello") # doctest: +ELLIPSIS
+# Adding a tuple
+>>> add_integer((4, 5), 6)
 Traceback (most recent call last):
     ...
-TypeError: b must be an integer
+TypeError: a must be an integer
+
+# Adding a boolean
+>>> add_integer(True, 5)
+6
+
+>>> add_integer(8, False)
+8
