@@ -1,0 +1,25 @@
+>>> add_integer(5, 15)
+20
+
+>>> add_integer(-5, 15)
+10
+
+>>> add_integer(True, 15) # doctest: +ELLIPSIS
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer
+
+>>> add_integer("Hello", 15) # doctest: +ELLIPSIS
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer
+
+>>> add_integer(5, True) # doctest: +ELLIPSIS
+Traceback (most recent call last):
+    ...
+TypeError: b must be an integer
+
+>>> add_integer(5, "Hello") # doctest: +ELLIPSIS
+Traceback (most recent call last):
+    ...
+TypeError: b must be an integer
