@@ -1,3 +1,7 @@
+"""
+Test cases for add_integer function
+"""
+
 >>> add_integer(5, 15)
 20
 
