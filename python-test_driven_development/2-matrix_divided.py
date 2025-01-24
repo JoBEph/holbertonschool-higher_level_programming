@@ -1,11 +1,24 @@
 #!/usr/bin/python3
 
 def matrix_divided(matrix, div):
+    """
+    Divides all elements of a matrix by a given divisor.
 
-    if not isinstance(matrix, list):
-        raise TypeError(
-            "matrix must be a matrix (list of lists) of integers/floats"
-            )
+    Args:
+        matrix (list of lists of int/float): The matrix to be divided.
+        div (int/float): The divisor.
+
+    Returns:
+        list of lists of float: A new matrix with all elements divided by div, rounded to 2 decimal places.
+
+    Raises:
+        TypeError: If matrix is not a list of lists of integers/floats,
+                   if each row of the matrix does not have the same size,
+                   or if div is not a number.
+        ZeroDivisionError: If div is zero.
+    """
+    if matrix is None:
+        raise TypeError("'NoneType' object is not iterable")
     if not all(isinstance(row, list) for row in matrix):
         raise TypeError(
             "matrix must be a matrix (list of lists) of integers/floats"
