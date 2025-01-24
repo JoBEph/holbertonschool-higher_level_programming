@@ -1,8 +1,11 @@
->>> add_integer(5, 15)
-20
 
->>> add_integer(-5, 15)
-10
+>>> add_integer = __import__('0-add_integer').add_integer
+
+>>> add_integer(1, 2)
+3
+
+>>> add_integer(100, -2)
+98
 
 >>> add_integer(True, 15) # doctest: +ELLIPSIS
 Traceback (most recent call last):
