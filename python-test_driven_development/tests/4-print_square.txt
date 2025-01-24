@@ -4,39 +4,39 @@ Test cases for the print_square function
 
 >>> print_square = __import__('4-print_square').print_square
 
-# Test with a valid size (integer)
+# Testez avec une taille valide (entier)
 >>> print_square(3)
-xxx
-xxx
-xxx
+####
+####
+####
 ------------------------------------------
 
-# Test with another size (integer)
+# Testez avec une autre taille (entier)
 >>> print_square(1)
-x
+#
 ------------------------------------------
 
-# Test with a different size (integer)
+# Testez avec une taille différente (entier)
 >>> print_square(2)
-xx
-xx
+##
+##
 ------------------------------------------
 
-# Test if size is not an integer
+# Testez si la taille n'est pas un entier
 >>> print_square("4")
 Traceback (most recent call last):
     ...
 TypeError: size must be an integer
 ------------------------------------------
 
-# Test if size is negative
+# Testez si la taille est négative
 >>> print_square(-4)
 Traceback (most recent call last):
     ...
 ValueError: size must be >= 0
 ------------------------------------------
 
-# Test if size is a float and less than 0
+# Testez si la taille est flottante et inférieure à 0
 >>> print_square(-4.5)
 Traceback (most recent call last):
     ...
