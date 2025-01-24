@@ -5,7 +5,6 @@ def text_indentation(text):
         raise TypeError("text must be a string")
     if not text:
         raise ValueError("text must not be empty")
-    
     special_chars = [".", ":", "?"]
     i = 0
     while i < len(text):
