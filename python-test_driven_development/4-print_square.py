@@ -1,6 +1,20 @@
 #!/usr/bin/python3
 
+"""
+    print_square: prints a square with the character #
+    size: integer
+    return: None
+"""
+
+
 def print_square(size):
+
+    """
+    print_square: prints a square with the character #
+    size: integer
+    return: None
+    """
+
     if not isinstance(size, int):
         raise TypeError("size must be an integer")
     if size < 0:
