@@ -1,6 +1,17 @@
 #!/usr/bin/python3
 
+"""
+This module contains the function text_indentation
+"""
+
+
 def text_indentation(text):
+
+    """
+    function prints a text with 2 new lines after each of these characters:
+    (., ?)
+    """
+
     if not isinstance(text, str):
         raise TypeError("text must be a string")
     if not text:
