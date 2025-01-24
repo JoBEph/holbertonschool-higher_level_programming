@@ -6,21 +6,25 @@
 >>> add_integer(-5, 15)
 10
 
+# The next line should raise a TypeError as True is not considered an integer:
 >>> add_integer(True, 15) # doctest: +ELLIPSIS
 Traceback (most recent call last):
     ...
 TypeError: a must be an integer
 
+# The next line should raise a TypeError as "Hello" is a string, not an integer:
 >>> add_integer("Hello", 15) # doctest: +ELLIPSIS
 Traceback (most recent call last):
     ...
 TypeError: a must be an integer
 
+# The next line should raise a TypeError as True is not considered an integer:
 >>> add_integer(5, True) # doctest: +ELLIPSIS
 Traceback (most recent call last):
     ...
 TypeError: b must be an integer
 
+# The next line should raise a TypeError as "Hello" is a string, not an integer:
 >>> add_integer(5, "Hello") # doctest: +ELLIPSIS
 Traceback (most recent call last):
     ...
