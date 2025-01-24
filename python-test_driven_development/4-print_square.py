@@ -12,7 +12,7 @@ def print_square(size):
     """
     print_square: prints a square with the character #
     size: integer
-    return: None
+    print:()
     """
 
     if not isinstance(size, int):
