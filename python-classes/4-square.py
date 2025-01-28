@@ -19,9 +19,17 @@ class Square:
         self.__size = size
 
     def area(self):
+        """
+        calculate area
+        """
+
         return self.__size ** 2
 
     def my_print(self):
+        """
+        print square
+        """
+
         for i in range(self.__size):
             for j in range(self.__size):
                 print("#", end="")
