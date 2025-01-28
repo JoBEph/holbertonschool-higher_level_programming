@@ -10,6 +10,7 @@ class Square:
     typeserror and valueerror and define the area
     """
 
+    @property
     def __init__(self, size=0):
         self.__size = size
         if not isinstance(size, int):
@@ -18,19 +19,9 @@ class Square:
             raise ValueError("size must be >= 0")
         self.__size = size
 
-    def area(self):
-        """
-        calculate area
-        """
-
-        return self.__size ** 2
-
-    def my_print(self):
-        """
-        print square
-        """
-
-        for i in range(self.__size):
-            for j in range(self.__size):
-                print("#", end="")
-            print()
+        @size.setter
+        def area(self):
+            """
+            calculate area
+            """
+            return self.__size ** 2
