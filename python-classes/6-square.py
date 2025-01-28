@@ -10,9 +10,9 @@ class Square:
     typeserror and valueerror and define the area
     """
 
-    def __init__(self, size=0):
+    def __init__(self, size=0, position=(0, 0)):
         self.__size = size
-        self.position = (0, 0)
+        self.position = position
 
     @property
     def size(self):
@@ -38,7 +38,7 @@ class Square:
         if not all(isinstance(i, int) for i in value):
             raise TypeError("check every element of position")
         if value[0] < 0 or value[1] < 0:
-            raise ValueError("check either element if less than 0")
+            raise ValueError("position must be >= 0")
         self.__position = value
 
     def area(self):
