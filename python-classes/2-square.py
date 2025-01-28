@@ -1,6 +1,14 @@
 #!/usr/bin/python3
 
+"""
+this is square module
+"""
+
 class Square:
+    """
+    create classe named square with typeserror and valueerror
+    """
+
     def __init__(self, size=0):
         self.__size = size
         if not isinstance(size, int):
