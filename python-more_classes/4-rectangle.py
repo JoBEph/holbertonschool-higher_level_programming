@@ -64,7 +64,4 @@ class Rectangle:
         """
         repr
         """
-        return self.__str__()
-    
-    def eval(self):
-        return self.__str__()
+        return "Rectangle({}, {})".format(self.__width, self.__height)
