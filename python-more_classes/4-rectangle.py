@@ -65,3 +65,6 @@ class Rectangle:
         repr
         """
         return self.__str__()
+    
+    def eval(self):
+        return self.__str__()
