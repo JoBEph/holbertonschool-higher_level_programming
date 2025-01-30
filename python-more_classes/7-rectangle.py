@@ -8,7 +8,7 @@ class Rectangle:
 
     number_of_instances = 0
 
-    print symbol = "#"
+    symbol = "#"
 
     def __init__(self, width=0, height=0):
         self.width = width
@@ -60,8 +60,8 @@ class Rectangle:
         """
         if self.__width == 0 or self.__height == 0:
             return ""
-        symbol =str(getattr(self, "print symbol", Rectangle.symbol))
-        return "\n".join([symbol * self.__width for i in range(self.__height)])
+        
+        return "\n".join([self.symbol * self.__width for _ in range(self.__height)])
 
     def __repr__(self):
         """
