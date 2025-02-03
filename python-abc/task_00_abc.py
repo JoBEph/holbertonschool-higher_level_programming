@@ -2,6 +2,10 @@
 
 from abc import ABC, abstractmethod
 
+"""
+Create an abstract class Animal with an abstract method sound.
+"""
+
 
 class Animal(ABC):
 
