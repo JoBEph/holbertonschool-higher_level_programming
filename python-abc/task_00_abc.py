@@ -2,13 +2,19 @@
 
 from abc import ABC, abstractmethod
 
+
 class Animal(ABC):
 
     @abstractmethod
     def sound(self):
         pass
-    
-    def dog(self):
-        self.sound("bark")
-    def cat(self):
-        self.sound("meow")
+
+
+class Dog(Animal):
+    def sound(self):
+        return "bark"
+
+
+class Cat(Animal):
+    def sound(self):
+        return "meow"
