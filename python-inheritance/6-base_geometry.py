@@ -7,6 +7,6 @@ class BaseGeometry:
     """empty class base geo"""
 
 
-def area(self):
+    def area(self):
 
-    raise Exception('area() is not implemented')
+        raise Exception('area() is not implemented')
