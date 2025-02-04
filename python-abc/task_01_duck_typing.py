@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from abc import ABC, abstractmethod
-
+import math
 """
 define abstract class Shape with abstract methods area and perimeter
 """
@@ -23,11 +23,11 @@ class Circle(Shape):
         self.radius = radius
 
     def area(self):
-        self.area = 3.14 * self.radius * self.radius
+        self.area = math.pi * self.radius * self.radius
         return self.area
 
     def perimeter(self):
-        self.perimeter = 2 * 3.14 * self.radius
+        self.perimeter = 2 * math.pi * self.radius
         return self.perimeter
 
 
