@@ -48,3 +48,4 @@ class Square(BaseGeometry):
     def area(self):
         """define area"""
         return self.__size * self.__size
+    pass
