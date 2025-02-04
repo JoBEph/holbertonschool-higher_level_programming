@@ -2,40 +2,30 @@
 Test cases for my_list function
 """
 
->>> Mylist = __import__('1-my_list').MyList
+>>> MyList = __import__('1-my_list').MyList
 
-#sorted MyList
+# Adding positive to positive
 >>> my_list = MyList()
->>> my_list += (4)
->>> my_list.print_sorted()
-[4]
-
-#acending order
-
->>> my_list = Mylist()
->>> my_list += [0]
 >>> my_list.append(1)
->>> my_list.append(4)
 >>> my_list.append(2)
->>> my_list.append(5)
 >>> my_list.append(3)
 >>> my_list.print_sorted()
-[0, 1, 2, 3, 4, 5]
+[1, 2, 3]
 
-#decrement order
-
->>> my_list = MyList()
+# Adding negative to positive
 >>> my_list.append(-1)
->>> my_list.append(-4)
 >>> my_list.append(-2)
->>> my_list.append(-5)
->>> my_list.append(-3)
 >>> my_list.print_sorted()
-[0, -1, -2, -3, -4, -5]
+[-2, -1, 1, 2, 3]
 
-# list with nothing
+TypeError: '<' not supported between instances of 'str' and 'int'
 
->>> my_list = MyList(None)
+>>> my_list = MyList([1, 4], [3, 2])
 Traceback (most recent call last):
     ...
-TypeError: 'NoneType' object is not iterable
+TypeError: list expected at most 1 argument, got 2
+
+>>> list_no_exist.print_sorted()
+Traceback (most recent call last):
+    ...
+NameError: name 'list_no_exist' is not defined
