@@ -1,4 +1,6 @@
-#test MyList.txt
+"""
+Test cases for my_list function
+"""
 
 >>> Mylist = __import__('1-my_list').MyList
 
@@ -37,7 +39,3 @@
 Traceback (most recent call last):
     ...
 TypeError: 'NoneType' object is not iterable
-
-# list with string inside
->>> my_list = MyList (World, 2, 3)
-TypeError must be a number
