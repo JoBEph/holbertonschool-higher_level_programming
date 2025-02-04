@@ -21,11 +21,11 @@ class Dog(Animal):
     def sound(self):
         """sound from dog"""
 
-        return "bark"
+        return "Bark"
 
 
 class Cat(Animal):
     """cat animal class"""
     def sound(self):
         """sound from cat"""
-        return "meow"
+        return "Meow"
