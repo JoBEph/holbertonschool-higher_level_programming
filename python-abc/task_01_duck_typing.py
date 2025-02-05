@@ -10,6 +10,8 @@ define abstract class Shape with abstract methods area and perimeter
 
 
 class Shape(ABC):
+    """Classe de base abstraite pour les formes"""
+
     @abstractmethod
     def area(self):
         pass
@@ -20,6 +22,7 @@ class Shape(ABC):
 
 
 class Circle(Shape):
+    """Définit un cercle à partir de la forme"""
 
     def __init__(self, radius):
         self.radius = radius
@@ -32,6 +35,8 @@ class Circle(Shape):
 
 
 class Rectangle(Shape):
+    """Définit un rectangle à partir de la forme"""
+
     def __init__(self, length, width):
         self.length = length
         self.width = width
