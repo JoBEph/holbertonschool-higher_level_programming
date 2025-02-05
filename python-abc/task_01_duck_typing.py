@@ -47,6 +47,7 @@ class Rectangle(Shape):
     def perimeter(self):
         return 2 * (self.length + self.width)
 
-    def shape_info(self):
-        print(f"Area: {self.area()}")
-        print(f"Perimeter: {self.perimeter()}")
+
+def shape_info(self):
+    print(f"Area: {self.area()}")
+    print(f"Perimeter: {self.perimeter()}")
