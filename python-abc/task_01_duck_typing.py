@@ -48,7 +48,7 @@ class Rectangle(Shape):
         return 2 * (self.length + self.width)
 
 
-def shape_info(self):
+def shape_info(Shape):
     """accept all shape inside"""
     print(f"Area: {Shape.area()}")
     print(f"Perimeter: {Shape.perimeter()}")
