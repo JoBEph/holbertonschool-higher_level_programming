@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
 """create empty class base geometry"""
 
 
@@ -7,15 +9,11 @@ class BaseGeometry:
     """empty class base geo"""
 
     def area(self):
-
         """area self"""
-
         raise Exception('area() is not implemented')
 
     def integer_validator(self, name, value):
-
         """check if value is int > 0"""
-
         if type(value) is not int:
             raise TypeError(f'{name} must be an integer')
         if value <= 0:
@@ -26,9 +24,7 @@ class Rectangle(BaseGeometry):
     """Rectangle from base geometry"""
 
     def __init__(self, width, height):
-
         """init self, width, height for rectangle"""
-
         self.integer_validator("width", width)
         self.integer_validator("height", height)
         self.__width = width
