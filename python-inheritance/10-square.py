@@ -2,10 +2,11 @@
 
 """create empty class base geometry"""
 
-Rectangle = __import__("9-rectangle").rectangle
+Rectangle = __import__("9-rectangle").Rectangle
 
 
 class Square(Rectangle):
+    """lalalala"""
 
     def __init__(self, size):
         """private size and validate integer"""
