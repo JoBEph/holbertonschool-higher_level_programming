@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""overite file from txt and return the number of characters"""
+"""overite file and append file txt and return the number of characters"""
 
 
 def append_write(filename="", text=""):
