@@ -10,6 +10,7 @@ def serialize_and_save_to_file(data, filename):
         """with open"""
         json.dump(data, f, indent=2)
 
+
 def load_and_deserialize(filename):
     """def load and deserialize"""
     with open(filename, "r", encoding="utf-8") as f:
