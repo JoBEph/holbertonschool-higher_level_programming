@@ -3,20 +3,20 @@
 import json
 import csv
 
-def convert_csv_to_json(csv_file, json_file):
+
+def convert_csv_to_json(csv_file):
     """Convert CSV to JSON."""
-    data = {}
+    data = []
     try:
         with open(csv_file, encoding='utf-8') as csvf:
             csvReader = csv.DictReader(csvf)
 
             for rows in csvReader:
-                key = rows['No']
-                data[key] = rows
+                data.append(rows)
 
-        with open(json_file, 'w', encoding='utf-8') as jsonf:
+        with open("data.json", 'w', encoding='utf-8') as jsonf:
             jsonf.write(json.dumps(data, indent=4))
-            print(f"Data CSV [{csv_file}] converted to JSON [{json_file}]")
+            print(f"Data CSV [{csv_file}] converted to data.json")
             return True
     except FileNotFoundError:
         print(f"Error: file {csv_file} not found")
@@ -24,6 +24,7 @@ def convert_csv_to_json(csv_file, json_file):
         print(f"Error: {e}")
     return False
 
+
 csv_file = 'Names.csv'
-json_file = 'Names.json'
-convert_csv_to_json(csv_file, json_file)
+
+convert_csv_to_json(csv_file)
