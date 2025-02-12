@@ -1,13 +1,19 @@
 #!/usr/bin/python3
-"""import Student"""
-
-Student = __import__('9-student').Student
+""" function class Student that defines a student by"""
 
 
-class Student(Student):
-    """ call student"""
+class Student:
+    """define class Student"""
+
+    def __init__(self, first_name, last_name, age):
+        """def init"""
+
+        self.first_name = first_name
+        self.last_name = last_name
+        self.age = age
+
     def to_json(self, attrs=None):
-        """call def to json"""
+        """def class to json"""
         if attrs is None:
             return self.__dict__
         else:
