@@ -4,7 +4,9 @@
 
 
 def read_file(filename=""):
+    """def file name"""
 
     with open(filename, "r", encoding="utf-8") as f:
+        """with open"""
         data_file = f.read()
         print(data_file)
