@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
+"""basic Python script to fetch posts from JSONPlacehold"""
 
 import requests
 import csv
+
 
 def fetch_and_print_posts():
     url = 'https://jsonplaceholder.typicode.com/posts'
@@ -13,12 +15,16 @@ def fetch_and_print_posts():
         for post in posts:
             print(post['title'])
 
+
 def fetch_and_save_posts():
     url = 'https://jsonplaceholder.typicode.com/posts'
     response = requests.get(url)
     status_code = response.status_code
     posts = response.json()
-    data =  [{'id': post['id'], 'title': post['title'], 'body': post['body']} for post in posts]
+    data = [
+        {'id': post['id'], 'title': post['title'], 'body': post['body']}
+        for post in posts
+    ]
     with open('posts.csv', 'w', newline="", encoding="utf-8") as fcsv:
         writer = csv.DictWriter(fcsv, fieldnames=['id', 'title', 'body'])
         writer.writeheader()
