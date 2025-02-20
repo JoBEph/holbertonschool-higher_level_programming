@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import http.server
-import socketserver
 import json
 from http.server import BaseHTTPRequestHandler
 
@@ -36,7 +35,8 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
 
 if __name__ == "__main__":
     PORT = 8000
-    Handler = SimpleHTTPRequestHandler
-    with socketserver.TCPServer(("", PORT), Handler) as httpd:
+    server = SimpleHTTPRequestHandler
+
+    with http.server.HTTPServer(("localhost", PORT), server) as httpd:
         print(f"Serving on port {PORT}")
         httpd.serve_forever()
