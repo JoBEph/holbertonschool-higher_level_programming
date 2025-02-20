@@ -4,6 +4,7 @@ import http.server
 import json
 from http.server import BaseHTTPRequestHandler
 
+
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
 
     def do_GET(self):
@@ -33,10 +34,11 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(b"Endpoint not found")
 
-if __name__ == "__main__":
-    PORT = 8000
-    server = SimpleHTTPRequestHandler
 
-    with http.server.HTTPServer(("localhost", PORT), server) as httpd:
-        print(f"Serving on port {PORT}")
+if __name__ == "__main__":
+
+    PORT = 8000
+    Handler = SimpleHTTPRequestHandler
+    with http.server.HTTPServer(("localhost", PORT), Handler) as httpd:
+        print(f"Serving on port, {PORT}")
         httpd.serve_forever()
