@@ -30,9 +30,13 @@ def authenticate(username, password):
 def role_required(role):
     def decorator(f):
         @wraps(f)
-        def wrapper(current_user, *args, **kwargs):
-            if current_user['role'] != role:
-                return jsonify({"error": "Admin access required"}), 403
+        def wrapper(*args, **kwargs):
+            current_user_name = get_jwt_identity()
+            current_user = next((
+                u for u in users if u["username"] == current_user_name), None
+                )
+            if not current_user or current_user['role'] != role:
+                return jsonify({"error": "Privilèges insuffisants"}), 403
             return f(current_user, *args, **kwargs)
         return wrapper
     return decorator
@@ -89,4 +93,4 @@ def handle_needs_fresh_token_error(err):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
