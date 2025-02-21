@@ -86,12 +86,14 @@ def protected_route():
     return jsonify({"message": f"JWT Auth: Access Granted"})
 
 
-@app.route('/admin-only', methods=['GET'])
+@app.route("/admin-only", methods=['GET'])
 @jwt_required()
-@role_required('admin')
-def admin_route():
-    current_user = get_jwt_identity()
-    return jsonify({"message": f"Admin Access: Granted"})
+def admin_access():
+    logged_user = get_jwt_identity()
+    user = users.get(logged_user)
+    if user["role"] == "admin":
+        return "Admin Access: Granted"
+    return jsonify({"error": "Admin access required"}), 403
 
 
 @jwt.unauthorized_loader
@@ -119,5 +121,5 @@ def handle_needs_fresh_token_error(err):
     return jsonify({"error": "Fresh token required"}), 401
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run()
