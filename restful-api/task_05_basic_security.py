@@ -11,7 +11,7 @@ from flask_jwt_extended import create_access_token, get_jwt_identity
 from flask_httpauth import HTTPBasicAuth
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
+app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY") or "secret_key"
 jwt = JWTManager(app)
 auth = HTTPBasicAuth()
 
@@ -47,7 +47,7 @@ def role_required(role):
                 )
             if not current_user or current_user['role'] != role:
                 return jsonify({"error": "Privilèges insuffisants"}), 403
-            return f(current_user, *args, **kwargs)
+            return f(*args, **kwargs)
         return wrapper
     return decorator
 
@@ -69,7 +69,7 @@ def login():
         return jsonify({"message": "Could not verify"}), 401
 
     token = create_access_token(identity=user['username'], fresh=True)
-    return jsonify({'token': token})
+    return jsonify({'access_token': token})
 
 
 @app.route('/jwt-protected', methods=['GET'])
@@ -79,7 +79,7 @@ def protected_route():
     return jsonify({"message": f"JWT Auth: Access Granted, Welcome {current_user}!"})
 
 
-@app.route('/admin', methods=['GET'])
+@app.route('/admin-only', methods=['GET'])
 @jwt_required()
 @role_required('admin')
 def admin_route():
@@ -90,6 +90,7 @@ def admin_route():
 @jwt.unauthorized_loader
 def handle_unauthorized_error(err):
     return jsonify({"error": "Missing or invalid token"}), 401
+
 
 @jwt.invalid_token_loader
 def handle_invalid_token_error(err):
