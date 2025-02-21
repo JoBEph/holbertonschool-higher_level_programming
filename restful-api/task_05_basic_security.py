@@ -17,9 +17,17 @@ auth = HTTPBasicAuth()
 
 
 users = {
-    "user1": {"username": "user1", "password": generate_password_hash("password"), "role": "user"},
-    "admin1": {"username": "admin1", "password": generate_password_hash("password"), "role": "admin"}
-}
+    "user1": {
+        "username": "user1",
+        "password": generate_password_hash("password"),
+        "role": "user"
+        },
+    "admin1": {
+        "username": "admin1",
+        "password": generate_password_hash("password"),
+        "role": "admin"
+        }
+    }
 
 
 @auth.verify_password
@@ -42,11 +50,10 @@ def role_required(role):
         @wraps(f)
         def wrapper(*args, **kwargs):
             current_user_name = get_jwt_identity()
-            current_user = next((
-                u for u in users if u["username"] == current_user_name), None
-                )
-            if not current_user or current_user['role'] != role:
-                return jsonify({"error": "Privilèges insuffisants"}), 403
+            user = users.get(current_user_name)
+
+            if not user or user["role"] != role:
+                return jsonify({"error": "Insufficient privileges"}), 403
             return f(*args, **kwargs)
         return wrapper
     return decorator
@@ -69,14 +76,14 @@ def login():
         return jsonify({"message": "Could not verify"}), 401
 
     token = create_access_token(identity=user['username'], fresh=True)
-    return jsonify({'access_token': token})
+    return jsonify({'access_token': token}), 200
 
 
 @app.route('/jwt-protected', methods=['GET'])
 @jwt_required()
 def protected_route():
     current_user = get_jwt_identity()
-    return jsonify({"message": f"JWT Auth: Access Granted, Welcome {current_user}!"})
+    return jsonify({"message": f"JWT Auth: Access Granted"})
 
 
 @app.route('/admin-only', methods=['GET'])
@@ -84,7 +91,7 @@ def protected_route():
 @role_required('admin')
 def admin_route():
     current_user = get_jwt_identity()
-    return jsonify({"message": f"Admin Access: Granted, Welcome {current_user}!"})
+    return jsonify({"message": f"Admin Access: Granted"})
 
 
 @jwt.unauthorized_loader
