@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 """basic security for user/admin roles used in the API"""
+import os
+import datetime
 from functools import wraps
 from flask import Flask, request, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -36,24 +38,45 @@ def verify_password(username, password):
     return None
 
 
+def authenticate(username, password):
+    user = users.get(username)
+    if user and check_password_hash(user["password"], password):
+        return user
+    return None
+
+
+def role_required(role):
+    def decorator(f):
+        @wraps(f)
+        def wrapper(*args, **kwargs):
+            current_user_name = get_jwt_identity()
+            user = users.get(current_user_name)
+
+            if not user or user["role"] != role:
+                return jsonify({"error": "Insufficient privileges"}), 403
+            return f(*args, **kwargs)
+        return wrapper
+    return decorator
+
+
 @app.route('/basic-protected', methods=['GET'])
 @auth.login_required
 def basic_protected():
     return "Basic Auth: Access Granted"
 
 
-@app.route("/login", methods=['POST'])
+@app.route('/login', methods=['POST'])
 def login():
-    username = request.json.get("username", None)
-    password = request.json.get("password", None)
-    if not username or not password:
-        return jsonify({"message": "username and password required"}), 400
+    auth = request.get_json()
+    if not auth or not auth.get('username') or not auth.get('password'):
+        return jsonify({"message": "Could not verify"}), 401
 
-    logged_user = users.get(username)
-    if logged_user and check_password_hash(logged_user["password"], password):
-        access_token = create_access_token(identity=username)
-        return jsonify(access_token=access_token), 200
-    return jsonify({"message": "Invalid username or password"}), 401
+    user = authenticate(auth.get('username'), auth.get('password'))
+    if not user:
+        return jsonify({"message": "Could not verify"}), 401
+
+    token = create_access_token(identity=user['username'], fresh=True)
+    return jsonify({'access_token': token}), 200
 
 
 @app.route('/jwt-protected', methods=['GET'])
