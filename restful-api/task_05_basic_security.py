@@ -72,7 +72,7 @@ def login():
     return jsonify({'token': token})
 
 
-@app.route('/protected', methods=['GET'])
+@app.route('/jwt-protected', methods=['GET'])
 @jwt_required()
 def protected_route():
     current_user = get_jwt_identity()
@@ -90,6 +90,10 @@ def admin_route():
 @jwt.unauthorized_loader
 def handle_unauthorized_error(err):
     return jsonify({"error": "Missing or invalid token"}), 401
+
+@jwt.invalid_token_loader
+def handle_invalid_token_error(err):
+    return jsonify({"error": "Invalid token"}), 401
 
 
 @jwt.expired_token_loader
