@@ -14,7 +14,7 @@ if __name__ == "__main__":
             port=3306
         )
         cursor = rows.cursor()
-        cursor.execute("SELECT * FROM states ORDER BY states.id ASC")
+        cursor.execute("SELECT * FROM states ORDER BY ASC")
         states = cursor.fetchall()
 
         for row in states:
