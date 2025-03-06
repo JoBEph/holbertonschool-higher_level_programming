@@ -5,7 +5,6 @@ import MySQLdb
 import sys
 
 if __name__ == "__main__":
-    def get_states():
         db = MySQLdb.connect(
             host="localhost",
             user=sys.argv[1],
@@ -22,4 +21,3 @@ if __name__ == "__main__":
             print(row)
         cursor.close()
         db.close()
-    get_states()
