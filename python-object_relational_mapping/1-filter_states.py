@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 """
-filter states by user input
+lists all states
 """
 import MySQLdb
 import sys
+
 
 if __name__ == "__main__":
     def list_states():
@@ -21,6 +22,7 @@ if __name__ == "__main__":
 
         cur.execute("SELECT * FROM states \
                     WHERE BINARY name LIKE 'N%' ORDER BY id ASC")
+
         rows = cur.fetchall()
 
         for row in rows:
