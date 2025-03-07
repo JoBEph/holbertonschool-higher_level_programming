@@ -6,7 +6,7 @@ import MySQLdb
 import sys
 
 if __name__ == "__main__":
-        """def filter_states():"""
+    def list_states():
 
         db = MySQLdb.connect(
             host="localhost",
@@ -19,7 +19,7 @@ if __name__ == "__main__":
 
         cursor = db.cursor()
 
-        cursor.execute("SELECT * FROM states \
+        cursor.execute("SELECT * FROM rows \
                 WHERE BINARY name LIKE 'N%' ORDER BY id ASC")
         rows = cursor.fetchall()
 
@@ -28,3 +28,5 @@ if __name__ == "__main__":
 
         cursor.close()
         db.close()
+
+    list_states()
