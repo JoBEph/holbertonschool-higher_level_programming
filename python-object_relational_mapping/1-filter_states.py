@@ -17,16 +17,16 @@ if __name__ == "__main__":
             port=3306
             )
 
-        cursor = db.cursor()
+        cur = db.cursor()
 
-        cursor.execute("SELECT * FROM rows \
-                WHERE BINARY name LIKE 'N%' ORDER BY id ASC")
-        rows = cursor.fetchall()
+        cur.execute("SELECT * FROM states \
+                    WHERE BINARY name LIKE 'N%' ORDER BY id ASC")
+        rows = cur.fetchall()
 
         for row in rows:
             print(row)
 
-        cursor.close()
+        cur.close()
         db.close()
 
     list_states()
