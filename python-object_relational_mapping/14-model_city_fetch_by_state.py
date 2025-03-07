@@ -22,6 +22,6 @@ if __name__ == "__main__":
 
         )
 
-    for city in cities:
-        print('{}: ({}) {}'.format(city.state.name, city.id, city.name))
+    for city, state in cities:
+        print('{}: ({}) {}'.format(state.name, city.id, city.name))
     session.close()
