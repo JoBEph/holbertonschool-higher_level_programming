@@ -7,16 +7,13 @@ import sys
 
 if __name__ == "__main__":
     def filter_states():
-        username = sys.argv[1]
-        password = sys.argv[2]
-        database = sys.argv[3]
-        state_name = sys.argv[4]
+        """def filter_states():"""
 
         db = MySQLdb.connect(
             host="localhost",
-            user=username,
-            password=password,
-            db=database,
+            user=sys.argv[1],
+            password=sys.argv[2],
+            db=sys.argv[3],
             charset="utf8",
             port=3306
             )
